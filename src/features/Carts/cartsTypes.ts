@@ -16,7 +16,7 @@ export interface Product {
 }
 
 export interface Cart {
-  id: number;
+  id: number | string;
   products: Array<Product>;
   total: number;
   discountedTotal: number;

@@ -5,6 +5,8 @@ import PaginationControl from "../../components/Pagination/PaginationControl";
 import CartChart from "./CartChart";
 import CartExcerpt from "./CartExcerpt";
 import { cartsSet, selectCarts, selectSelectedCart } from "./cartsSlice";
+import { BsFillCartFill } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 const CartsList = () => {
   const [totalPages, setTotalPages] = useState(0);
@@ -37,7 +39,9 @@ const CartsList = () => {
   };
 
   useEffect(() => {
-    fetchCarts();
+    if (!carts) {
+      fetchCarts();
+    }
   }, []);
 
   useEffect(() => {
@@ -50,7 +54,18 @@ const CartsList = () => {
   console.log(totalPages);
 
   return (
-    <div>
+    <>
+      <div className="flex items-center gap-3 justify-center sm:justify-end mb-5">
+        <h2 className="text-2xl">You can also</h2>
+        <Link
+          to="/createCart"
+          className="  max-w-[150px] w-full bg-tertiary rounded-full py-1  flex items-center justify-center gap-3"
+        >
+          <BsFillCartFill />
+          Create a cart
+        </Link>
+      </div>
+
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-10">
         {carts
           ?.map((cart) => <CartExcerpt key={cart.id} cart={cart} />)
@@ -64,7 +79,7 @@ const CartsList = () => {
         handlePreviousPage={handlePreviousPage}
       />
       {cart && <CartChart cart={cart} />}
-    </div>
+    </>
   );
 };
 

@@ -1,4 +1,9 @@
-import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import {
+  createSlice,
+  createAsyncThunk,
+  PayloadAction,
+  nanoid,
+} from "@reduxjs/toolkit";
 import axios from "axios";
 import { RootState } from "../../app/store";
 import { Cart } from "./cartsTypes";
@@ -38,10 +43,20 @@ const cartsSlice = createSlice({
         state.carts = state.carts?.filter((cart) => cart.id !== id);
       }
     },
+
+    // Nanoid (only in case of adding) cause dummyJSON after posting new cart will always return a cart with id: 21 since it doesn't update the server after the post request
+    cartAdded: {
+      reducer: (state, action: PayloadAction<Cart>) => {
+        state.carts?.push(action.payload);
+      },
+
+      prepare: (cart: Cart) => ({ payload: { ...cart, id: nanoid() } }),
+    },
   },
 });
 
-export const { cartsSet, cartSelected, cartRemoved } = cartsSlice.actions;
+export const { cartsSet, cartSelected, cartRemoved, cartAdded } =
+  cartsSlice.actions;
 
 export const selectSelectedCart = (state: RootState) =>
   state.carts.selectedCart;

@@ -1,8 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
-import Carts from "./pages/Carts";
 import Home from "./pages/Home";
-import Products from "./pages/Products";
+import CreateCart from "./features/Carts/CreateCart";
 import SignIn from "./pages/SignIn";
 
 function App() {
@@ -14,8 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/signIn" element={<SignIn />} />
-          <Route path="/carts" element={<Carts />} />
-          <Route path="/products" element={<Products />} />
+          <Route path="/createCart" element={<CreateCart />} />
         </Routes>
       </main>
     </div>

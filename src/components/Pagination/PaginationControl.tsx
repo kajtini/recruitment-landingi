@@ -14,7 +14,7 @@ const PaginationControl = ({
   handleNextPage,
 }: PaginationControlProps) => {
   return (
-    <div className="mb-10 flex items-center justify-end  gap-3">
+    <div className="mb-10 flex items-center justify-end gap-3">
       <span className="text-lg">
         {currentPage}/{totalPages}
       </span>
