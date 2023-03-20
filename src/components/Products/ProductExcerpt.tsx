@@ -1,10 +1,10 @@
-import { Product } from "../../features/Carts/cartsTypes";
+import { ProductDetailed } from "../../features/Carts/cartsTypes";
 import { AiFillDollarCircle } from "react-icons/ai";
 import { BsFillCartFill } from "react-icons/bs";
 import { useState } from "react";
 
 interface ProductExcerptProps {
-  product: Product;
+  product: ProductDetailed;
   handleConfirmAdd: (productId: number, quantity: number) => void;
   handleRemoveFromCart: (productId: number) => void;
   currentQuantity: number;

@@ -6,13 +6,16 @@ export interface Product {
   quantity: number;
   title: string;
   total: number;
-  rating?: number;
-  description?: string;
-  category?: string;
-  brand?: string;
-  images?: Array<string>;
-  stock?: number;
-  thumbnail?: string;
+}
+
+export interface ProductDetailed extends Product {
+  rating: number;
+  description: string;
+  category: string;
+  brand: string;
+  images: Array<string>;
+  stock: number;
+  thumbnail: string;
 }
 
 export interface Cart {

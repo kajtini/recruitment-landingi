@@ -3,13 +3,13 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { cartAdded, selectCarts } from "../../features/Carts/cartsSlice";
-import { Product } from "../../features/Carts/cartsTypes";
+import { ProductDetailed } from "../../features/Carts/cartsTypes";
 import { selectUser } from "../../features/user/userSlice";
 import PaginationControl from "../Pagination/PaginationControl";
 import ProductExcerpt from "./ProductExcerpt";
 
 const ProductsList = () => {
-  const [products, setProducts] = useState<Array<Product> | null>(null);
+  const [products, setProducts] = useState<Array<ProductDetailed> | null>(null);
   const [totalPages, setTotalPages] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [currentCart, setCurrentCart] = useState<

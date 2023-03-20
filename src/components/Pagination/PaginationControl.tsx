@@ -18,14 +18,16 @@ const PaginationControl = ({
       </span>
       <div className="flex gap-3 max-w-xs w-full">
         <button
-          className="border-active border-solid border-[1px]  py-1 rounded-full w-full"
+          className="border-active border-solid border-[1px]  py-1 rounded-full w-full disabled:opacity-70"
           onClick={handlePreviousPage}
+          disabled={currentPage === 1 ? true : false}
         >
           Previous Page
         </button>
         <button
-          className="bg-active py-1 rounded-full w-full"
+          className="bg-active py-1 rounded-full w-full disabled:opacity-70"
           onClick={handleNextPage}
+          disabled={currentPage === totalPages ? true : false}
         >
           Next Page
         </button>
