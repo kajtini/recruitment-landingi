@@ -1,6 +1,5 @@
-import { nanoid } from "@reduxjs/toolkit";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { cartAdded, selectCarts } from "../../features/Carts/cartsSlice";
@@ -19,6 +18,7 @@ const ProductsList = () => {
       quantity: number;
     }>
   >([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const user = useAppSelector(selectUser);
   const dispatch = useAppDispatch();
@@ -75,12 +75,14 @@ const ProductsList = () => {
     cart: Array<{ id: number; quantity: number }>
   ) => {
     try {
+      setIsLoading(true);
       const res = await axios.post("https://dummyjson.com/carts/add", {
         userId: user?.id,
         products: cart,
       });
       dispatch(cartAdded(res.data));
       setCurrentCart([]);
+      setIsLoading(false);
     } catch (error) {
       console.error(error);
     }
@@ -95,8 +97,6 @@ const ProductsList = () => {
       setTotalPages(Math.ceil(products.length / 6));
     }
   }, [products]);
-
-  console.log(carts);
 
   return (
     <div>
@@ -114,8 +114,10 @@ const ProductsList = () => {
 
         {currentCart.length > 0 && (
           <button
-            className="bg-tertiary py-1 rounded-full w-full max-w-[256px]"
+            className="bg-tertiary py-1 rounded-full w-full max-w-[256px]
+            disabled:bg-gray disabled:bg-opacity-40"
             onClick={() => handleAddCart(currentCart)}
+            disabled={isLoading ? true : false}
           >
             Add cart with {currentCart.length} products
           </button>

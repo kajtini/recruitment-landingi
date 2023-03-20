@@ -1,8 +1,6 @@
-import React from "react";
 import { Cart } from "./cartsTypes";
 import { BsFillCartFill } from "react-icons/bs";
 import { AiFillDollarCircle, AiOutlineLineChart } from "react-icons/ai";
-import { IoIosRemove } from "react-icons/io";
 import { useAppDispatch } from "../../app/hooks";
 import { cartRemoved, cartSelected } from "./cartsSlice";
 

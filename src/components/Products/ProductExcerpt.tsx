@@ -1,9 +1,7 @@
 import { Product } from "../../features/Carts/cartsTypes";
 import { AiFillDollarCircle } from "react-icons/ai";
-import { RiStockLine } from "react-icons/ri";
 import { BsFillCartFill } from "react-icons/bs";
 import { useState } from "react";
-import { is } from "immer/dist/internal";
 
 interface ProductExcerptProps {
   product: Product;
@@ -67,7 +65,7 @@ const ProductExcerpt = ({
             <input
               placeholder="Amount"
               type="number"
-              max={product.stock}
+              max={product.stock && product.stock - currentQuantity}
               min={1}
               className="bg-gray bg-opacity-30 py-2 px-3 rounded-3xl max-w-[100px] sm:max-w-[150px] w-full"
               value={quantity}
@@ -94,12 +92,9 @@ const ProductExcerpt = ({
           </form>
         ) : (
           <div className="flex items-center justify-between mt-auto">
-            <div className="flex items-center gap-2">
-              <RiStockLine />
-              <p className="text-xl font-medium text-">
-                Stock: {product.stock ? product.stock - currentQuantity : 0}
-              </p>
-            </div>
+            <p className="text-xl font-medium text-">
+              Stock: {product.stock ? product.stock - currentQuantity : 0}
+            </p>
 
             <button
               className={`bg-tertiary py-1 rounded-full flex-grow max-w-[150px] flex items-center gap-2 justify-center ${

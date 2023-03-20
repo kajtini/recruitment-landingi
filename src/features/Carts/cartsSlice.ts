@@ -44,7 +44,6 @@ const cartsSlice = createSlice({
       }
     },
 
-    // Nanoid (only in case of adding) cause dummyJSON after posting new cart will always return a cart with id: 21 since it doesn't update the server after the post request
     cartAdded: {
       reducer: (state, action: PayloadAction<Cart>) => {
         state.carts?.push(action.payload);

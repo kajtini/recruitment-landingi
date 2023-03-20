@@ -50,9 +50,6 @@ const CartsList = () => {
     }
   }, [carts]);
 
-  console.log(carts);
-  console.log(totalPages);
-
   return (
     <>
       <div className="flex items-center gap-3 justify-center sm:justify-end mb-5">
