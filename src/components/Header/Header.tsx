@@ -2,12 +2,6 @@ import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { logout, selectUser } from "../../features/user/userSlice";
 
-/* 
-  Test Account
-  username: 'kminchelle'
-  password: '0lelplR'
-*/
-
 const Header = () => {
   const user = useAppSelector(selectUser);
 
