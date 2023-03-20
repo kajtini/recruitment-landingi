@@ -11,6 +11,11 @@ interface ChartOptions {
   chart: { id: string };
   xaxis: {
     categories: Array<string>;
+    labels?: {
+      style: {
+        colors: string;
+      };
+    };
   };
   tooltip?: {
     theme: "light" | "dark";
@@ -38,6 +43,11 @@ const CartChart = ({ cart }: CartChartProps) => {
           },
           xaxis: {
             categories: cart.products.map((product) => product.title),
+            labels: {
+              style: {
+                colors: "#FBF5FB",
+              },
+            },
           },
           tooltip: {
             theme: "dark",

@@ -39,7 +39,11 @@ const ProductExcerpt = ({
   };
 
   return (
-    <li className="bg-gray bg-opacity-20 rounded-2xl overflow-hidden flex flex-col">
+    <li
+      className={`bg-gray bg-opacity-20 rounded-2xl overflow-hidden flex flex-col ${
+        product.stock && product.stock - currentQuantity === 0 && "opacity-50"
+      }`}
+    >
       <img
         className="h-36 w-full object-cover"
         src={product.thumbnail}
