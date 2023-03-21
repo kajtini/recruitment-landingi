@@ -7,8 +7,8 @@ This project represents a dashboard of carts and a brief information about them 
 Install my-project with npm
 
 ```bash
-  git clone https://github.com/your-username/your-repo.git
-  cd your-repo
+  git clone https://github.com/kajtini/recruitment-landingi.git
+  cd recruitment-landingi
   npm install
   npm run dev
 ```
