@@ -21,4 +21,4 @@ Install my-project with npm
 
 ## Demo
 
-recruitment-landingi.netlify.app
+https://recruitment-landingi.netlify.app
